@@ -1,0 +1,54 @@
+.container-page {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  background-color: black;
+  margin: auto;
+  height: 100%;
+}
+
+.header-page {
+  display: block;
+  padding: 1rem;
+  padding-bottom: 0rem;
+  border: 1px solid white;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hp-logo {
+  height: 42px;
+  width: 124px;
+}
+
+.filter-text {
+  font-size: 20px;
+  font-weight: 700;
+  color: #FFF;
+  text-align: center;
+}
+
+.body-page {
+  display: flex;
+  flex: 4;
+  flex-direction: row;
+  border: 1px solid white;
+}
+
+.button-container {
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+  width: 100%;
+}
+
+.footer-page {
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+  border: 1px solid white;
+}
