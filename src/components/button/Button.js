@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 import "./Button.scss";
 
-const Button = ({ filterName = 'Sin nombre' }) => {
+const Button = ({ filterName = 'Sin nombre', applyFilter = () => {} }) => {
   const [activeButton, setActiveButton] = useState(false);
 
   const normalButton = () => {
@@ -13,6 +13,8 @@ const Button = ({ filterName = 'Sin nombre' }) => {
     setActiveButton(true);
 
     setTimeout(normalButton, 500);
+
+    applyFilter();
   };
 
   return (

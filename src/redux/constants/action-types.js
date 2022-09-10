@@ -1,0 +1,4 @@
+export const ActionTypes = {
+  SET_CHARACTERS: "SET_CHARACTERS",
+  ADD_CHARACTER: "ADD_CHARACTER",
+};
