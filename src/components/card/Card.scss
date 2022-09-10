@@ -4,7 +4,6 @@
   flex-direction: row;
   order: 2;
   border-radius: 5px;
-  border: 1px solid #FFFFFF;
   margin: 1rem;
 }
 
@@ -13,8 +12,20 @@
   flex: 1;
   flex-direction: column;
   border-radius: 5px;
-  border: 1px solid #FFFFFF;
+  border: 1px solid transparent;
   margin: 1rem;
+}
+
+.photo-div-mobile {
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: auto;
+  padding: 1rem;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
 }
 
 .photo-div {
@@ -24,12 +35,28 @@
   align-items: center;
   justify-content: center;
   width: auto;
-  border: 1px solid #FFFFFF;
+  padding: 1rem;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
 }
 
 .photo {
-  width: 71px;
-  height: 96px;
+  width: 70px;
+  height: 70px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.info-div-mobile {
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: auto;
+  background-color: #FFFFFF;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
 }
 
 .info-div {
@@ -39,8 +66,9 @@
   align-items: center;
   justify-content: center;
   width: auto;
-  border: 1px solid #FFFFFF;
   background-color: #FFFFFF;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
 }
 
 .info-col {
@@ -66,5 +94,34 @@
 .info-row {
   display: flex;
   flex-direction: row;
+  flex: 2;
+}
+
+.info-col {
+  display: flex;
+  flex-direction: column;
   flex: 1;
+  margin-left: 5px;
+  margin-bottom: 5px;
+}
+
+.fav-col {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  align-items: flex-end;
+  justify-content: center;
+  margin-right: 10px;
+}
+
+.alive-text {
+  font-size: 11px;
+  font-weight: 600;
+  color: #999999;
+  margin: 0;
+}
+
+.fav-icon {
+  width: 23px;
+  height: 23px;
 }

@@ -7,12 +7,14 @@ import Card from "../components/card/Card";
 import "./HpLandingPage.scss";
 
 import hpLogo from "../assets/hp_logo.png";
+import addCharacter from "../assets/add_character.png";
 import { useDispatch, useSelector } from "react-redux";
 import { setCharacters } from "../redux/actions/characterActions";
 
 function HpLandingPage() {
   const characters = useSelector((state) => state);
   const [result, setResult] = useState([]);
+  const [modal, setModal] = useState(false);
   const dispatch = useDispatch();
 
   const fetchCharacters = async () => {
@@ -44,6 +46,10 @@ function HpLandingPage() {
 
   function clearFilters() {
     setResult([]);
+  }
+
+  function showModal() {
+    setModal(true);
   }
 
   return (
@@ -90,9 +96,14 @@ function HpLandingPage() {
             />
           ))}
         </div>)}
-      </div>
-      <div className="footer-page">
-
+        <div className="fixed-bar">
+          <div className="favorites">
+            <p className="add-text">FAVORITOS</p>
+          </div>
+          <div className="add" onClick={showModal}>
+           <p className="add-text">AGREGAR</p>
+          </div>
+        </div>
       </div>
     </div>
   );

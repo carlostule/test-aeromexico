@@ -13,3 +13,17 @@ export const addCharacter = (character) => {
     payload: character,
   };
 };
+
+export const setFavoritesCharacters = (favorite) => {
+  return {
+    type: ActionTypes.SET_FAVORITES_CHARACTERS,
+    payload: favorite,
+  };
+};
+
+export const removeFavoriteCharacters = (favorite) => {
+  return {
+    type: ActionTypes.REMOVE_FAVORITES_CHARACTERS,
+    payload: favorite,
+  };
+};

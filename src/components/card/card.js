@@ -1,6 +1,10 @@
 import React, { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
 
+import { setFavoritesCharacters, removeFavoriteCharacters } from "../../redux/actions/characterActions";
 import defaultUser from "../../assets/default_user.png";
+import favIcon from "../../assets/fav_icon.png";
+import favIconSelected from "../../assets/fav_icon_selected.png";
 import "./Card.scss";
 
 const Card = ({
@@ -13,9 +17,11 @@ const Card = ({
   birthday = 'no birthday',
   gender = 'no gender',
   eyesColor = 'is blind',
-  hairColor = 'is bald'
+  hairColor = 'is bald',
 }) => {
   const [width, setWidth] = useState(getWindowSize());
+  const [fav, setFav] = useState(false);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     function handleWindowResize() {
@@ -44,19 +50,48 @@ const Card = ({
     }
   }
 
+  function pushFavoriteCharacter() {
+    const character = {
+      name,
+      gender,
+      house,
+      dateOfBirth: birthday,
+      eyeColour: eyesColor,
+      hairColour: hairColor,
+      hogwartsStudent,
+      hogwartsStaff,
+      alive,
+      image: photo
+    };
+
+    if (!fav) {
+      dispatch(setFavoritesCharacters(character));
+    } else {
+      dispatch(removeFavoriteCharacters(character));
+    }
+    
+    setFav(current => !current);
+  }
+
   function mobileCard() {
     return (
       <div className="card-container-mobile">
-        <div className="photo-div" style={{ background: selectorColorHouse() }}>
+        <div className="photo-div-mobile" style={{ background: selectorColorHouse() }}>
           <img src={photo} className="photo" alt="Foto de perfil"/>
         </div>
-        <div className="info-div">
+        <div className="info-div-mobile" style={!alive ? { backgroundColor: '#CCCCCC' } : null}>
           <div className="info-col">
             <div className="name-row">
               <h2 className="name-text">{name}</h2>
             </div>
             <div className="info-row">
-
+              <div className="info-col">
+                <p className="alive-text">{alive ? 'VIVO' : 'FINADO'}</p>
+                <p className="alive-text">{hogwartsStudent ? 'ESTUDIANTE' : 'STAFF'}</p>
+              </div>
+              <div className="fav-col" onClick={pushFavoriteCharacter}>
+                <img src={fav ? favIconSelected : favIcon} alt="Fav icon" className="fav-icon" />
+              </div>
             </div>
           </div>
         </div>
@@ -66,7 +101,7 @@ const Card = ({
 
   function desktopCard() {
     return (
-      <div className="card-container">
+      <div className="card-container" onClick={pushFavoriteCharacter}>
         <div className="photo-div" style={{ background: selectorColorHouse() }}>
           <img src={photo} className="photo" alt="Foto de perfil"/>
         </div>
