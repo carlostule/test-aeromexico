@@ -12,6 +12,7 @@ import hpLogo from "../assets/hp_logo.png";
 import addCharacter from "../assets/add_character.png";
 import favIcon from "../assets/fav_icon_white.png";
 import deleteIcon from "../assets/delete.png";
+import bg from "../assets/background.png";
 import { useDispatch, useSelector } from "react-redux";
 import { setCharacters, removeFavoriteCharacters } from "../redux/actions/characterActions";
 
@@ -63,64 +64,74 @@ function HpLandingPage() {
   console.log(characters.allCharacters.favorites);
 
   return (
-    <div className="container-page">
-      <div className="header-page">
-        <div className="logo-container">
-          <img src={hpLogo} alt="Logo de Harry Potter" className="hp-logo" onClick={clearFilters}/>
-        </div>
-        <p className="filter-text">Selecciona tu filtro</p>
-      </div>
-      <div className="body-page">
-        <div className="button-container">
-          <Button filterName="Estudiantes" applyFilter={() => filtering('students')}/>
-          <Button filterName="Staff" applyFilter={() => filtering('staff')}/>
-        </div>
-        {result.length > 0 ? (<div className="cards-container">
-          {result.length > 0 && result.map((character) => (
-            <Card
-              photo={character.image}
-              name={character.name}
-              house={character.house}
-              hogwartsStudent={character.hogwartsStudent}
-              hogwartsStaff={character.hogwartsStaff}
-              alive={character.alive}
-              birthday={character.dateOfBirth}
-              gender={character.gender}
-              eyesColor={character.eyeColour}
-              hairColor={character.hairColour}
-            />
-          ))}
-        </div>) : (<div className="cards-container">
-          {characters.allCharacters?.characters.length > 0 && characters.allCharacters?.characters.map((character) => (
-            <Card
-              photo={character.image}
-              name={character.name}
-              house={character.house}
-              hogwartsStudent={character.hogwartsStudent}
-              hogwartsStaff={character.hogwartsStaff}
-              alive={character.alive}
-              birthday={character.dateOfBirth}
-              gender={character.gender}
-              eyesColor={character.eyeColour}
-              hairColor={character.hairColour}
-            />
-          ))}
-        </div>)}
-        <div className="fixed-bar">
-          <div className="favorites">
-            <DropdownButton
-              drop="up"
-              title={<span>FAVORITOS <img src={favIcon} alt="FavIcon" className="fav-icon-white"/></span>}
-              variant="link"
-              style={{ backgroundColor: "transparent", textDecoration: "none" }}
-            >
-              {characters.allCharacters?.favorites.length > 0 ? characters.allCharacters?.favorites?.map((item) => (
-                <Dropdown.Item>{item.name}<img src={deleteIcon} alt="Borrar" className="delete-icon" onClick={() => deleteFavoriteCharacter(item)}/></Dropdown.Item>
-              )) : (<Dropdown.Item>No hay personajes favoritos</Dropdown.Item>)}
-            </DropdownButton>
+    <div style={{ backgroundImage: `url(${bg})`, backgroundSize: 'cover' }}>
+      <div className="container-page">
+        <div className="header-page">
+          <div className="logo-container">
+            <img src={hpLogo} alt="Logo de Harry Potter" className="hp-logo" onClick={clearFilters}/>
           </div>
-          <div className="add">
-           <p className="add-text">AGREGAR</p>
+          <p className="filter-text">Selecciona tu filtro</p>
+        </div>
+        <div className="body-page">
+          <div className="button-container">
+            <Button filterName="Estudiantes" applyFilter={() => filtering('students')}/>
+            <Button filterName="Staff" applyFilter={() => filtering('staff')}/>
+          </div>
+          {result.length > 0 ? (<div className="cards-container">
+            {result.length > 0 && result.map((character) => (
+              <Card
+                photo={character.image}
+                name={character.name}
+                house={character.house}
+                hogwartsStudent={character.hogwartsStudent}
+                hogwartsStaff={character.hogwartsStaff}
+                alive={character.alive}
+                birthday={character.dateOfBirth}
+                gender={character.gender}
+                eyesColor={character.eyeColour}
+                hairColor={character.hairColour}
+              />
+            ))}
+          </div>) : (<div className="cards-container">
+            {characters.allCharacters?.characters.length > 0 && characters.allCharacters?.characters.map((character) => (
+              <Card
+                photo={character.image}
+                name={character.name}
+                house={character.house}
+                hogwartsStudent={character.hogwartsStudent}
+                hogwartsStaff={character.hogwartsStaff}
+                alive={character.alive}
+                birthday={character.dateOfBirth}
+                gender={character.gender}
+                eyesColor={character.eyeColour}
+                hairColor={character.hairColour}
+              />
+            ))}
+          </div>)}
+          <div className="fixed-bar">
+            <div className="favorites">
+              <DropdownButton
+                drop="up"
+                title={<span>FAVORITOS <img src={favIcon} alt="FavIcon" className="fav-icon-white"/></span>}
+                variant="link"
+                style={{ backgroundColor: "transparent", textDecoration: "none" }}
+              >
+                {characters.allCharacters?.favorites.length > 0 ? characters.allCharacters?.favorites?.map((item, index) => {
+                  if (index === characters.allCharacters?.favorites.length - 1) {
+                    return (<Dropdown.Item><img src={item.image} className="photo-drop" alt="Foto de perfil"/> {item.name}<img src={deleteIcon} alt="Borrar" className="delete-icon" onClick={() => deleteFavoriteCharacter(item)}/></Dropdown.Item>)
+                  } else {
+                    return (
+                      <>
+                        <Dropdown.Item><img src={item.image} className="photo-drop" alt="Foto de perfil"/> {item.name}<img src={deleteIcon} alt="Borrar" className="delete-icon" onClick={() => deleteFavoriteCharacter(item)}/></Dropdown.Item>
+                        <Dropdown.Divider />
+                      </>
+                    )
+                  }}) : (<Dropdown.Item>No hay personajes favoritos</Dropdown.Item>)}
+              </DropdownButton>
+            </div>
+            <div className="add">
+            <p className="add-text">AGREGAR</p>
+            </div>
           </div>
         </div>
       </div>

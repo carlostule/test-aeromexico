@@ -65,7 +65,7 @@ const Card = ({
       image: photo
     };
 
-    if (!fav) {
+    if (!fav && characters.allCharacters.favorites.length < 5) {
       dispatch(setFavoritesCharacters(character));
     } else {
       dispatch(removeFavoriteCharacters(character));

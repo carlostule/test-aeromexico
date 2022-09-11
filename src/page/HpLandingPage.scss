@@ -12,7 +12,7 @@
   .container-page {
     max-width: 900px;
     margin: 0 auto;
-    background-color: black;
+    background-color: transparent;
   }
 }
 
@@ -163,4 +163,11 @@
 .delete-icon {
   width: 24px;
   height: 24px;
+}
+
+.photo-drop {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  object-fit: cover;
 }
