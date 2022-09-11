@@ -130,6 +130,7 @@ function HpLandingPage() {
     fetchCharacters();
     showModal();
     alert("Se agregó un nuevo personaje");
+    window.location.reload();
   }
 
   return (
