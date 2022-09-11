@@ -35,6 +35,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
 }
 
 .hp-logo {
@@ -160,6 +161,11 @@
   height: 17px;
 }
 
+.add-icon-white {
+  width: 26px;
+  height: 27px;
+}
+
 .delete-icon {
   width: 24px;
   height: 24px;
@@ -170,4 +176,62 @@
   height: 20px;
   border-radius: 50%;
   object-fit: cover;
+}
+
+.form-control {
+  background-color: rgba(38, 50, 48, 0.06) !important;
+  border: 0px !important;
+  border-bottom: 1px solid #263238 !important;
+  border-radius: 0px !important;
+  border-top-left-radius: 5.33333px !important;
+  border-top-right-radius: 5.33333px !important;
+  height: 63px !important;
+}
+
+.form-check-input:checked {
+  background-color: white !important;
+  border-color: #0E4DA4 !important;
+  border: 1px solid #0E4DA4 !important;
+}
+
+.form-check-input:checked[type=radio] {
+  background-image: url(https://github.com/carlostule/test-aeromexico/blob/master/src/assets/radio-check.png?raw=true) !important;
+}
+
+.form-container {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+
+.form-row-1 {
+  display: flex;
+  flex: 2;
+  flex-direction: row;
+}
+
+.form-row-2 {
+  display: block;
+  flex: 1;
+  flex-direction: row;
+  padding: 1rem;
+}
+
+.form-col {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  padding: 1rem;
+}
+
+.modal-header {
+  --bs-modal-header-border-width: 0 !important;
+  --bs-modal-header-padding: 2rem !important;
+}
+
+.modal-footer {
+  justify-content: center !important;
+  --bs-modal-footer-border-width: 0 !important;
+  margin-left: 20%;
+  margin-right: 20%;
 }

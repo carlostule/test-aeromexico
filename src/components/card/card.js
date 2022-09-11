@@ -7,6 +7,8 @@ import favIcon from "../../assets/fav_icon.png";
 import favIconSelected from "../../assets/fav_icon_selected.png";
 import "./Card.scss";
 
+import { getWindowSize } from "../../utils/getWindowSize";
+
 const Card = ({
   photo = defaultUser,
   name = 'no name',
@@ -139,10 +141,5 @@ const Card = ({
 
   return width >= 600 ? desktopCard() : mobileCard();
 };
-
-function getWindowSize() {
-  const { innerWidth } = window;
-  return innerWidth;
-}
 
 export default Card;
