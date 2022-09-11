@@ -1,20 +1,23 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from "react";
+import { DropdownButton, Dropdown } from "react-bootstrap";
 import axios from "axios";
 
 import Button from "../components/button/Button";
 import Card from "../components/card/Card";
 import "./HpLandingPage.scss";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 import hpLogo from "../assets/hp_logo.png";
 import addCharacter from "../assets/add_character.png";
+import favIcon from "../assets/fav_icon_white.png";
+import deleteIcon from "../assets/delete.png";
 import { useDispatch, useSelector } from "react-redux";
-import { setCharacters } from "../redux/actions/characterActions";
+import { setCharacters, removeFavoriteCharacters } from "../redux/actions/characterActions";
 
 function HpLandingPage() {
   const characters = useSelector((state) => state);
   const [result, setResult] = useState([]);
-  const [modal, setModal] = useState(false);
   const dispatch = useDispatch();
 
   const fetchCharacters = async () => {
@@ -23,7 +26,7 @@ function HpLandingPage() {
     });
     dispatch(setCharacters(response.data));
   };
-  console.log(characters);
+
   useEffect(() => {
     fetchCharacters();
   }, [result]);
@@ -48,9 +51,16 @@ function HpLandingPage() {
     setResult([]);
   }
 
-  function showModal() {
-    setModal(true);
+  function deleteFavoriteCharacter(item) {
+    const character = characters.allCharacters?.favorites?.filter((char) => char.name === item.name);
+    dispatch(removeFavoriteCharacters(character[0]));
   }
+
+  function showModal() {
+    // setModal(true);
+  }
+
+  console.log(characters.allCharacters.favorites);
 
   return (
     <div className="container-page">
@@ -98,9 +108,18 @@ function HpLandingPage() {
         </div>)}
         <div className="fixed-bar">
           <div className="favorites">
-            <p className="add-text">FAVORITOS</p>
+            <DropdownButton
+              drop="up"
+              title={<span>FAVORITOS <img src={favIcon} alt="FavIcon" className="fav-icon-white"/></span>}
+              variant="link"
+              style={{ backgroundColor: "transparent", textDecoration: "none" }}
+            >
+              {characters.allCharacters?.favorites.length > 0 ? characters.allCharacters?.favorites?.map((item) => (
+                <Dropdown.Item>{item.name}<img src={deleteIcon} alt="Borrar" className="delete-icon" onClick={() => deleteFavoriteCharacter(item)}/></Dropdown.Item>
+              )) : (<Dropdown.Item>No hay personajes favoritos</Dropdown.Item>)}
+            </DropdownButton>
           </div>
-          <div className="add" onClick={showModal}>
+          <div className="add">
            <p className="add-text">AGREGAR</p>
           </div>
         </div>

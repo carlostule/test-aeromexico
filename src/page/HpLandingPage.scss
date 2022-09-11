@@ -22,6 +22,15 @@
   padding-bottom: 0rem;
 }
 
+@media (min-width: 600px) {
+  .header-page {
+    display: block;
+    padding: 1rem;
+    padding-bottom: 0rem;
+    margin-top: 3rem;
+  }
+}
+
 .logo-container {
   display: flex;
   align-items: center;
@@ -81,10 +90,12 @@
     flex-direction: row;
     position: fixed;
     top: 0px;
+    right: 0px;
+    left: auto;
     bottom: auto;
     background-color: #6B63B5;
     width: 100%;
-    max-width: 500px;
+    max-width: 300px;
     box-shadow: 0px -4px 4px rgba(0, 0, 0, 0.25);
     border-top-left-radius: 0px;
     border-top-right-radius: 0px;
@@ -122,4 +133,34 @@
   width: 24px;
   height: 24px;
   margin-left: 5%;
+}
+
+.btn-link {
+  --bs-btn-color: white !important;
+  font-weight: bold !important;
+  text-decoration: none !important;
+}
+
+.btn:first-child:hover {
+  color: white !important;
+}
+
+.dropdown-menu {
+  --bs-dropdown-bg: #6B63B5 !important;
+  --bs-dropdown-link-color: white !important;
+}
+
+.dropup .dropdown-toggle::after {
+  border-bottom: 0 !important;
+  border-left: 0 !important;
+}
+
+.fav-icon-white {
+  width: 16px;
+  height: 17px;
+}
+
+.delete-icon {
+  width: 24px;
+  height: 24px;
 }

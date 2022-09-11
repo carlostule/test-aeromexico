@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import { setFavoritesCharacters, removeFavoriteCharacters } from "../../redux/actions/characterActions";
 import defaultUser from "../../assets/default_user.png";
@@ -19,6 +19,7 @@ const Card = ({
   eyesColor = 'is blind',
   hairColor = 'is bald',
 }) => {
+  const characters = useSelector((state) => state);
   const [width, setWidth] = useState(getWindowSize());
   const [fav, setFav] = useState(false);
   const dispatch = useDispatch();
@@ -82,7 +83,7 @@ const Card = ({
         <div className="info-div-mobile" style={!alive ? { backgroundColor: '#CCCCCC' } : null}>
           <div className="info-col">
             <div className="name-row">
-              <h2 className="name-text">{name}</h2>
+              <h2 className="name-text">{alive ? '' : '+'} {name}</h2>
             </div>
             <div className="info-row">
               <div className="info-col">
@@ -90,7 +91,7 @@ const Card = ({
                 <p className="alive-text">{hogwartsStudent ? 'ESTUDIANTE' : 'STAFF'}</p>
               </div>
               <div className="fav-col" onClick={pushFavoriteCharacter}>
-                <img src={fav ? favIconSelected : favIcon} alt="Fav icon" className="fav-icon" />
+                <img src={fav && characters.allCharacters.favorites.filter((item) => item.name === name).length > 0 ? favIconSelected : favIcon} alt="Fav icon" className="fav-icon" />
               </div>
             </div>
           </div>
@@ -101,12 +102,36 @@ const Card = ({
 
   function desktopCard() {
     return (
-      <div className="card-container" onClick={pushFavoriteCharacter}>
+      <div className="card-container">
         <div className="photo-div" style={{ background: selectorColorHouse() }}>
           <img src={photo} className="photo" alt="Foto de perfil"/>
         </div>
-        <div className="info-div">
-          <p>Como estas?</p>
+        <div className="info-div" style={!alive ? { backgroundColor: '#CCCCCC' } : null}>
+          <div className="info-col">
+            <div className="info-row-desktop">
+              <div className="info-col-desktop">
+                <p className="alive-text">{alive ? 'VIVO' : 'FINADO'}/{hogwartsStudent ? 'ESTUDIANTE' : 'STAFF'}</p>
+              </div>
+              <div className="fav-col" onClick={pushFavoriteCharacter}>
+                <img src={fav && characters.allCharacters.favorites.filter((item) => item.name === name).length > 0 ? favIconSelected : favIcon} alt="Fav icon" className="fav-icon" />
+              </div>
+            </div>
+            <div className="name-row-desktop">
+              <h1 className="name-text">{alive ? '' : '+'}{name}</h1>
+            </div>
+            <div className="name-row-desktop">
+              <p className="text-regular"><span className="text-bold">Cumpleaños:</span> {birthday}</p>
+            </div>
+            <div className="detail-row-desktop">
+              <p className="text-regular"><span className="text-bold">Género:</span> {gender}</p>
+            </div>
+            <div className="detail-row-desktop">
+              <p className="text-regular"><span className="text-bold">Color de ojos:</span> {eyesColor}</p>
+            </div>
+            <div className="detail-row-desktop">
+              <p className="text-regular"><span className="text-bold">Color de pelo:</span> {hairColor}</p>
+            </div>
+          </div>
         </div>
       </div>
     );

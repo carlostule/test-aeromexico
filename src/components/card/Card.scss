@@ -47,6 +47,15 @@
   border-radius: 50%;
 }
 
+@media (min-width: 600px) {
+  .photo {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 50%;
+  }
+}
+
 .info-div-mobile {
   display: flex;
   flex: 1;
@@ -57,11 +66,12 @@
   background-color: #FFFFFF;
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
+  padding-top: 1rem;
 }
 
 .info-div {
   display: flex;
-  flex: 1;
+  flex: 2;
   flex-direction: row;
   align-items: center;
   justify-content: center;
@@ -69,9 +79,16 @@
   background-color: #FFFFFF;
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
+  padding: 1rem;
 }
 
 .info-col {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.info-col-desktop {
   display: flex;
   flex-direction: column;
   flex: 1;
@@ -85,6 +102,22 @@
   flex: 1;
 }
 
+.name-row-desktop {
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+  padding-top: 1rem;
+  margin-left: 1rem;
+}
+
+.detail-row-desktop {
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+  padding-top: 0rem;
+  margin-left: 1rem;
+}
+
 .name-text {
   font-size: 18px;
   font-weight: 600;
@@ -95,6 +128,13 @@
   display: flex;
   flex-direction: row;
   flex: 2;
+}
+
+.info-row-desktop {
+  display: flex;
+  flex-direction: row;
+  flex: 2;
+  margin-left: 1rem;
 }
 
 .info-col {
@@ -124,4 +164,15 @@
 .fav-icon {
   width: 23px;
   height: 23px;
+}
+
+.text-bold {
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.text-regular {
+  font-size: 12px;
+  font-weight: 400;
+  color: #374A59;
 }
