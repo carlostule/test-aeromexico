@@ -103,7 +103,7 @@ function HpLandingPage() {
 
   function addNewCharacter() {
     const newCharacter = {
-      id: `${Math.floor(Math.random())}-NEW`,
+      id: `${Math.floor(Math.random() * 10000000000000)}-NEW`,
       name: newName,
       species: "human",
       gender: newGenderM ? "female" : "male",
