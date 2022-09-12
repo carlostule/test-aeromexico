@@ -1,0 +1,18 @@
+{
+  "files": {
+    "main.css": "/test-aeromexico/static/css/main.c0147c2a.css",
+    "main.js": "/test-aeromexico/static/js/main.96cc3894.js",
+    "static/js/787.c3b8fd29.chunk.js": "/test-aeromexico/static/js/787.c3b8fd29.chunk.js",
+    "static/media/background.png": "/test-aeromexico/static/media/background.410aa80a2fb798a622c5.png",
+    "static/media/default_user.png": "/test-aeromexico/static/media/default_user.94750360a90ed85b9bb2.png",
+    "static/media/hp_logo.png": "/test-aeromexico/static/media/hp_logo.cceff177afd1011e1456.png",
+    "index.html": "/test-aeromexico/index.html",
+    "main.c0147c2a.css.map": "/test-aeromexico/static/css/main.c0147c2a.css.map",
+    "main.96cc3894.js.map": "/test-aeromexico/static/js/main.96cc3894.js.map",
+    "787.c3b8fd29.chunk.js.map": "/test-aeromexico/static/js/787.c3b8fd29.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.c0147c2a.css",
+    "static/js/main.96cc3894.js"
+  ]
+}
